@@ -71,6 +71,31 @@
               </execution>
             </executions>
           </plugin>
+          <!-- GPG加密插件 -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.6</version>
+            <executions>
+              <execution>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.sonatype.central</groupId>
+            <artifactId>central-publishing-maven-plugin</artifactId>
+            <version>0.8.0</version>
+            <extensions>true</extensions>
+            <configuration>
+              <publishingServerId>Keysecure-custody-sdk</publishingServerId>
+              <autoPublish>false</autoPublish>
+            </configuration>
+          </plugin>
         </plugins>
       </build>
       <distributionManagement>
