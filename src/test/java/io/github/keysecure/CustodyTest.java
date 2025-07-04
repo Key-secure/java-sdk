@@ -32,22 +32,22 @@ public class CustodyTest {
 
         CustodyClient client = CustodyClientFactory.createClient(cfg);
 
-        //register email user
+        // register email user
         System.out.print(client.getUserApi().getEmailUser("test@admin.com").toJson());
-        //Query user information
+        // Query user information
         UserInfoResult userInfo = client.getUserApi().getEmailUser("test@admin.com");
         System.out.print(userInfo.toJson());
 
-        //Querying Merchant Account Balance
+        // Querying Merchant Account Balance
         System.out.print(client.getAccountApi().getCompanyAccount("ETH").toJson());
-        //Query user balance
+        // Query user balance
         System.out.print(client.getAccountApi().getUserAccount(userInfo.getData().getUid(), "ETH").toJson());
-        //Query user recharge address
+        // Query user recharge address
         System.out.print(client.getAccountApi().getUserAddress(userInfo.getData().getUid(), "ETH").toJson());
-        //Query currency list
+        // Query currency list
         System.out.print(client.getCoinApi().getCoinList().toJson());
 
-        //Withdraw
+        // Withdraw
         WithdrawArgs args = new WithdrawArgs();
         args.setAmount(BigDecimal.ONE);
         args.setSymbol("USDT");
@@ -96,7 +96,7 @@ public class CustodyTest {
 
         cfg.setUserPrivateKey("Merchant private key");
 
-        cfg.setCustodyPublicKey("custody public key");
+        cfg.setCustodyPublicKey("Custody public key");
 
         CustodyClient client = CustodyClientFactory.createClient(cfg);
 
@@ -106,11 +106,11 @@ public class CustodyTest {
         args.setRequestId("234343411");
         args.setSymbol("usdt");
         args.setTo("10c533a212a795f692db6684d70c95e9");
-        System.out.println("transfer result：---" + client.getTransferApi().accountTransfer(args).toJson());
+        System.out.println("transfer result: " + client.getTransferApi().accountTransfer(args).toJson());
 
-        System.out.println("gain transfer record ：---" + client.getTransferApi().getAccountTransferList("123", ITransferApi.REQUEST_ID).toJson());
+        System.out.println("gain transfer record: " + client.getTransferApi().getAccountTransferList("123", ITransferApi.REQUEST_ID).toJson());
 
-        System.out.println("Sync transfer records：---" + client.getTransferApi().syncAccountTransferList(0).toJson());
+        System.out.println("Sync transfer records: " + client.getTransferApi().syncAccountTransferList(0).toJson());
 
     }
 }
