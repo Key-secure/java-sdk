@@ -19,7 +19,7 @@ mvn clean install -DskipTests=true
 
 ### How to use:
 
-```
+```java
 
 CustodyConfig cfg = new CustodyConfig();
 
